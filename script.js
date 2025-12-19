@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.animate-slide-up, .animate-slide-in-right').forEach(el => {
+    document.querySelectorAll('.animate-slide-up, .animate-slide-in-right, .animate-slide-in-left').forEach(el => {
         observer.observe(el);
     });
 });

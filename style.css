@@ -543,6 +543,17 @@ footer {
     }
 }
 
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 /* Animation Classes */
 .animate-slide-up {
     opacity: 0; /* Start hidden */
@@ -552,6 +563,14 @@ footer {
     animation: slideUp 2s ease-out forwards;
 }
 
+.animate-slide-in-left {
+    opacity: 0; /* Start hidden */
+}
+
+.animate-slide-in-left.active {
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
 .animate-slide-in-right {
     opacity: 0; /* Start hidden */
 }
@@ -559,6 +578,14 @@ footer {
 .animate-slide-in-right.active {
     animation: slideInRight 0.8s ease-out forwards;
 }
+
+/* Staggered Delays for Product Cards */
+.product-card:nth-child(1) { animation-delay: 0.2s; }
+.product-card:nth-child(2) { animation-delay: 0.4s; }
+.product-card:nth-child(3) { animation-delay: 0.6s; }
+.product-card:nth-child(4) { animation-delay: 0.8s; }
+.product-card:nth-child(5) { animation-delay: 1.0s; }
+.product-card:nth-child(6) { animation-delay: 1.2s; }
 
 /* Staggered Delays for Care Items */
 .care-item:nth-child(1) { animation-delay: 0.2s; }
