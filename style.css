@@ -221,8 +221,8 @@ img {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17vw, 17vw));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 .product-card {
@@ -469,8 +469,24 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 20px; /* Reducir padding lateral en móviles */
+    }
+
+    #main-header {
+        margin-top: 0;
+        top: 0;
+        border-radius: 0;
+        width: 100%;
+    }
+
     .header-content {
         flex-direction: row;
+        padding: 10px 0;
+    }
+
+    .logo img {
+        height: 40px;
     }
 
     .nav-links {
@@ -484,20 +500,70 @@ footer {
         padding: 20px 0;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         transition: var(--transition);
+        z-index: 999;
     }
 
     .nav-links.active {
         right: 0;
     }
 
+    .nav-links li {
+        margin: 15px 0;
+    }
+
     .hamburger {
         display: block;
+        font-size: 1.8rem;
+    }
+
+    /* Ajustes del Hero para celular */
+    #hero {
+        height: auto;
+        min-height: 50vh;
+        background-position: 10% center;
+        align-items: flex-start; /* Permitir que el contenido fluya */
+        margin-top: 0; /* Resetear margen negativo */
+        padding-top: 100px;
+    }
+
+    #hero::before {
+        background: rgba(0,0,0,0.4); /* Un poco más oscuro para legibilidad */
+    }
+    .hero-content {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        margin: 0;
+        opacity: 1; /* Asegurar visibilidad */
+        animation: fadeUp 1s ease-out forwards;
     }
 
     #hero h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        word-wrap: break-word; /* Evitar desbordamiento de palabras largas */
     }
 
+    #hero p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    /* Ajustes generales de texto y secciones */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    /* Ajustes para productos */
+    .products-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 30px;
+    }
+
+    /* Ajustes Footer */
     .footer-content {
         flex-direction: column;
         gap: 40px;
