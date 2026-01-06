@@ -86,4 +86,44 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.animate-slide-up, .animate-slide-in-right, .animate-slide-in-left').forEach(el => {
         observer.observe(el);
     });
+
+    // EmailJS Contact Form
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const btn = contactForm.querySelector('.btn-submit');
+            const statusMsg = document.getElementById('form-status');
+            const originalBtnText = btn.innerText;
+
+            btn.innerText = 'Enviando...';
+            statusMsg.style.display = 'none';
+            statusMsg.className = '';
+
+            const templateParams = {
+                name: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('mensaje').value
+            };
+
+            emailjs.send('service_7d1d99m', 'template_cozww7i', templateParams)
+                .then(function() {
+                    btn.innerText = originalBtnText;
+                    statusMsg.innerText = '¡Mensaje enviado con éxito!';
+                    statusMsg.style.color = 'green';
+                    statusMsg.style.display = 'block';
+                    contactForm.reset();
+                    setTimeout(() => {
+                        statusMsg.style.display = 'none';
+                    }, 5000);
+                }, function(error) {
+                    btn.innerText = originalBtnText;
+                    statusMsg.innerText = 'Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.';
+                    statusMsg.style.color = 'red';
+                    statusMsg.style.display = 'block';
+                    console.error('FAILED...', error);
+                });
+        });
+    }
 });
