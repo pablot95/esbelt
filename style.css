@@ -174,7 +174,7 @@ img {
     animation-delay: 0.5s;
 }
 
-#hero h2 {
+#hero h1 {
     font-family: var(--font-heading);
     font-style: italic;
     font-size: 3.5rem;
